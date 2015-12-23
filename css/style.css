@@ -30,13 +30,13 @@ h1 {
 
 }
 
-#slider img {
+.slider img {
 	height: 350px;
 	width: 940px;  
 }
 
-#slides {
-	position: absolute;
+.slides {
+	position: relative;
 }
 
 .slide-text {
