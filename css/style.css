@@ -20,6 +20,10 @@ h1 {
 	margin-bottom: 50px;
 }
 
+.intro {
+	color: red;
+}
+
 #slider {
 	float: left;
 	border: #666 solid 3px;

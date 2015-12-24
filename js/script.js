@@ -1,24 +1,58 @@
 
 $(document).ready(function() {
 
+	var speed = 500;
+	var autoSlide = "False";
+	var autoSlide_speed = 3000;
+
+	function nextSlide() {
+		$(".active").removeClass("active").addClass("oldActive");
+		if($(".oldActive").is(":last-child")) {
+			$(".slides").first().addClass("active");
+		}
+		else {
+
+			$(".oldActive").next().addClass("active");
+		}
+
+		$(".slides").fadeOut(speed);
+		$(".active").fadeIn(speed);
+		$(".oldActive").removeClass("oldActive");
+	}
+
 	//Initial setup - Adding the active class
 	$(".slides").first().addClass("active");
 
 	//Hide all slides
 	$(".slides").hide();
-	$(".active").show();
+	$(".active").fadeIn();
 	
 	$("#next").click(function() {
-		//$(".active").removeClass("active").addClass("oldActive");
-		//$(".oldActive").next().addClass(".active");
 
-		$(".active").addClass("oldActive");
-		$(".oldActive").hide();
-		$(".oldActive").next().addClass("active1");
-		$(".active1").show();
+		nextSlide();
+			
+	});
 
-		
+	$("#prev").click(function() {
+		$(".active").removeClass("active").addClass("oldActive");
+		if($(".oldActive").is(":first-child")) {
+			$(".slides").last().addClass("active");
+		}
+		else {
+
+			$(".oldActive").prev().addClass("active");		
+		}
+
+		$(".slides").fadeOut(speed);
+		$(".active").fadeIn(speed);
+		$(".oldActive").removeClass("oldActive");
 
 	});
 
+	if(autoSlide == "True") {
+		setInterval(function() {
+			nextSlide();
+		}, 3000);
+	}
+	
 });
